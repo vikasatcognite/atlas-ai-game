@@ -42,7 +42,7 @@ const LandingPage = ({ onPromptSelect }) => {
         </div>
 
         <div className="text-center text-sm text-gray-500 mb-4">
-          ⏱️ Complete investigation within 15 minutes • 🏆 Find root causes for bonus points
+          ⏱️ Complete investigation within 5 minutes • 🏆 Earn points for correct answers • ⚠️ Overtime penalties apply
         </div>
       </div>
     </div>

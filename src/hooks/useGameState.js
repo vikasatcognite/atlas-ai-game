@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { GAME_CONFIG, createMessage, calculateTimeBonus } from '../utils/gameUtils';
+import { GAME_CONFIG, createMessage, calculateOvertimePenalty } from '../utils/gameUtils';
 import { gameFlow } from '../data/gameData';
 
 export const useGameState = () => {
@@ -11,9 +11,9 @@ export const useGameState = () => {
   const [gameComplete, setGameComplete] = useState(false);
   const [wrongClicks, setWrongClicks] = useState(0);
 
-  // Timer effect
+  // Timer effect - continues counting even after time limit for overtime penalty
   useEffect(() => {
-    if (gameStarted && timeLeft > 0 && !gameComplete) {
+    if (gameStarted && !gameComplete) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timer);
     }
@@ -33,9 +33,12 @@ export const useGameState = () => {
   const handleOptionClick = (option) => {
     const userMessage = createMessage('user', option.text);
 
+    // Update scoring based on new system
     if (option.isCorrect === false) {
       setWrongClicks(prev => prev + 1);
-      setScore(prev => Math.max(0, prev - GAME_CONFIG.WRONG_CLICK_PENALTY));
+      setScore(prev => Math.max(0, prev - GAME_CONFIG.WRONG_ANSWER_PENALTY));
+    } else if (option.isCorrect === true) {
+      setScore(prev => prev + GAME_CONFIG.CORRECT_ANSWER_POINTS);
     }
 
     setMessages(prev => [...prev, userMessage]);
@@ -67,7 +70,11 @@ export const useGameState = () => {
         // Check for game completion
         if (nextStep === 'complete') {
           setGameComplete(true);
-          setScore(prev => prev + calculateTimeBonus(timeLeft));
+          // Apply overtime penalty if time ran out
+          const overtimePenalty = calculateOvertimePenalty(timeLeft);
+          if (overtimePenalty > 0) {
+            setScore(prev => Math.max(0, prev - overtimePenalty));
+          }
         }
       }
     }, 1000);

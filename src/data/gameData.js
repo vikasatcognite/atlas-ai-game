@@ -42,7 +42,7 @@ export const gameFlow = {
   },
   // Coolant Investigation Path
   '1-coolant-explain': {
-    botMessage: "Coolant plays a key role in heat transfer. If coolant is degraded, insufficient, or not replaced on schedule, it can lead to poor cooling and temperature spikes in the pump.\n\nCheck the work order.",
+    botMessage: "Coolant plays a key role in heat transfer. If coolant is degraded, insufficient, or not replaced on schedule, it can lead to poor cooling and temperature spikes in the pump.",
     options: [
       { text: "Check work order", next: '1-coolant-workorder', isCorrect: true },
       { text: "Skip to next parameter", next: '1-current-explain', isCorrect: true }
@@ -65,7 +65,7 @@ export const gameFlow = {
     ]
   },
   '1-current-detail': {
-    botMessage: "If the motor winding insulation fails, it leads to short circuits and inefficient operation, generating excessive heat.\n\nCheck Work Order.",
+    botMessage: "If the motor winding insulation fails, it leads to short circuits and inefficient operation, generating excessive heat.",
     options: [
       { text: "Check work order", next: '1-current-workorder', isCorrect: true },
       { text: "Skip to next parameter", next: '1-inlet-explain', isCorrect: true }
@@ -88,7 +88,7 @@ export const gameFlow = {
     ]
   },
   '1-inlet-detail': {
-    botMessage: "Low inlet pressure can cause cavitation and energy loss, creating abnormal temperature spikes.\n\nCheck Work Order.",
+    botMessage: "Low inlet pressure can cause cavitation and energy loss, creating abnormal temperature spikes.",
     options: [
       { text: "Check work order", next: '1-inlet-workorder', isCorrect: true },
       { text: "Skip to next parameter", next: '1-impeller-explain', isCorrect: true }
@@ -111,7 +111,7 @@ export const gameFlow = {
     ]
   },
   '1-impeller-detail': {
-    botMessage: "A clogged impeller increases torque load on the motor, reducing efficiency. This extra load generates heat, causing a temperature spike.\n\nCheck Work Order.",
+    botMessage: "A clogged impeller increases torque load on the motor, reducing efficiency. This extra load generates heat, causing a temperature spike.",
     options: [
       { text: "Check work order", next: '1-impeller-workorder', isCorrect: true },
       { text: "Skip checking", next: '1-recheck', isCorrect: false }

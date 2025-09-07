@@ -20,9 +20,10 @@ const GameHeader = ({ score, timeLeft }) => {
           <div className="flex items-center space-x-2">
             <Clock className="w-4 h-4 text-gray-500" />
             <span className={`font-mono text-sm ${
+              timeLeft < 0 ? 'text-red-600 font-bold' : 
               timeLeft < GAME_CONFIG.WARNING_TIME_THRESHOLD ? 'text-red-500' : 'text-gray-700'
             }`}>
-              {formatTime(timeLeft)}
+              {timeLeft < 0 ? `+${formatTime(Math.abs(timeLeft))}` : formatTime(timeLeft)}
             </span>
           </div>
           <div className="flex items-center space-x-2">
