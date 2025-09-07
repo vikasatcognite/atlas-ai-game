@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/atlas-ai-game/static/css/main.5d63f6a8.css",
-    "main.js": "/atlas-ai-game/static/js/main.a629b93a.js",
+    "main.js": "/atlas-ai-game/static/js/main.a7a7b1bc.js",
     "index.html": "/atlas-ai-game/index.html",
     "main.5d63f6a8.css.map": "/atlas-ai-game/static/css/main.5d63f6a8.css.map",
-    "main.a629b93a.js.map": "/atlas-ai-game/static/js/main.a629b93a.js.map"
+    "main.a7a7b1bc.js.map": "/atlas-ai-game/static/js/main.a7a7b1bc.js.map"
   },
   "entrypoints": [
     "static/css/main.5d63f6a8.css",
-    "static/js/main.a629b93a.js"
+    "static/js/main.a7a7b1bc.js"
   ]
 }
