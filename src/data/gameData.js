@@ -1,28 +1,23 @@
 export const landingPageOptions = [
   {
     text: "The Reflux Drum (3108-FTN-002) is experiencing a sharp increase in its liquid level, which has triggered high-level alarms. How can we resolve this?",
-    prompt: 5,
-    equipment: "Reflux Drum"
+    prompt: 5
   },
   {
     text: "The Reflux Pump (3108-PMP-001B) is experiencing a sudden increase in vibration and noise as seen in the time series graph. How can we resolve this?",
-    prompt: 3,
-    equipment: "Reflux Pump"
+    prompt: 3
   },
   {
     text: "The Regeneration Tower (3108-RT-001) was experiencing poor amine regeneration due to a decreasing temperature trend seen in the time series graph. How can we resolve this?",
-    prompt: 2,
-    equipment: "Regeneration Tower"
+    prompt: 2
   },
   {
     text: "Pump 3108-PMP-001A has failed due to a temperature spike seen in the time series graph. How can we resolve this?",
-    prompt: 1,
-    equipment: "Pump 3108-PMP-001A"
+    prompt: 1
   },
   {
     text: "The Reboiler (3108-RB-001) was failing to provide adequate heat to the Regeneration Tower due to a drop in the steam flow rate seen in the time series graph. How can we resolve this?",
-    prompt: 4,
-    equipment: "Reboiler"
+    prompt: 4
   }
 ];
 
@@ -142,37 +137,63 @@ export const gameFlow = {
 
   // Prompt 2 - Regeneration Tower (Already Resolved)
   2: {
-    botMessage: "Based on the data and maintenance logs, the issue with the Regeneration Tower (3108-RT-001) has been resolved.\n\n🔍 **Root Cause:** Steam Trap Failure on the reboiler. A faulty steam trap caused condensate to build up inside the reboiler, reducing the surface area available for heat transfer and leading to the decreasing temperature trend.\n\n✅ **Resolution:** The steam trap was replaced, and the tower is now operating normally.\n\nDo you want to explore other possible causes?",
+    botMessage: "🔍 **Root Cause:** Steam Trap Failure on the reboiler. A faulty steam trap caused condensate to build up inside the reboiler, reducing the surface area available for heat transfer and leading to the decreasing temperature trend.\n\n✅ **Resolution:** The steam trap was replaced, and the tower is now operating normally.\n\nBased on the data and maintenance logs, the issue with the Regeneration Tower (3108-RT-001) has been resolved.\n\nDo you want to explore other possible causes?",
     options: [
-      { text: "Yes", next: 'landing', isCorrect: true },
-      { text: "No action required", next: 'landing', isCorrect: true }
+      { text: "Yes, explore other issues", next: 'landing', isCorrect: true },
+      { text: "No, acknowledge resolution", next: '2-acknowledged', isCorrect: true }
     ]
   },
 
   // Prompt 3 - Reflux Pump (Already Resolved)
   3: {
-    botMessage: "Based on the data, the issue with the Reflux Pump (3108-PMP-001B) has been resolved.\n\n🔍 **Root Cause:** Cavitation due to a low liquid level in the Reflux Drum. This created vapor bubbles at the pump's inlet, which collapsed violently and caused the high vibration and noise.\n\n✅ **Resolution:** Liquid level in Reflux Drum has been restored to normal operating range.\n\nDo you want to explore other possible causes?",
+    botMessage: "🔍 **Root Cause:** Cavitation due to a low liquid level in the Reflux Drum. This created vapor bubbles at the pump's inlet, which collapsed violently and caused the high vibration and noise.\n\n✅ **Resolution:** Liquid level in Reflux Drum has been restored to normal operating range.\n\nBased on the data, the issue with the Reflux Pump (3108-PMP-001B) has been resolved.\n\nDo you want to explore other possible causes?",
     options: [
-      { text: "Yes", next: 'landing', isCorrect: true },
-      { text: "No action required", next: 'landing', isCorrect: true }
+      { text: "Yes, explore other issues", next: 'landing', isCorrect: true },
+      { text: "No, acknowledge resolution", next: '3-acknowledged', isCorrect: true }
     ]
   },
 
   // Prompt 4 - Reboiler (Already Resolved)
   4: {
-    botMessage: "The issue with the Reboiler (3108-RB-001) has been resolved.\n\n🔍 **Root Cause:** Data from the last maintenance cycle confirms that the root cause was a faulty steam control valve on the steam supply line. It was found to be partially closed, causing the drop in steam flow rate.\n\n✅ **Resolution:** The valve was recalibrated and fixed, restoring the correct steam flow. As a result, the reboiler is now providing adequate heat, and the Regeneration Tower is operating normally.\n\nDo you want to explore other possible causes?",
+    botMessage: "🔍 **Root Cause:** A faulty steam control valve on the steam supply line. It was found to be partially closed, causing the drop in steam flow rate.\n\n✅ **Resolution:** The valve was recalibrated and fixed, restoring the correct steam flow. As a result, the reboiler is now providing adequate heat, and the Regeneration Tower is operating normally.\n\nData from the last maintenance cycle confirms that the issue with the Reboiler (3108-RB-001) has been resolved.\n\nDo you want to explore other possible causes?",
     options: [
-      { text: "Yes", next: 'landing', isCorrect: true },
-      { text: "No action required", next: 'landing', isCorrect: true }
+      { text: "Yes, explore other issues", next: 'landing', isCorrect: true },
+      { text: "No, acknowledge resolution", next: '4-acknowledged', isCorrect: true }
     ]
   },
 
   // Prompt 5 - Reflux Drum (Already Resolved)
   5: {
-    botMessage: "Based on the data and maintenance logs, the issue with the Reflux Drum (3108-FTN-002) has been resolved.\n\n🔍 **Root Cause:** A faulty level control valve on the reflux line, which had failed in the closed position, preventing liquid from draining from the drum. This caused the liquid level to rise uncontrollably, triggering the alarms.\n\n✅ **Resolution:** Level control valve has been repaired and is functioning normally.\n\nDo you want to explore other possible causes?",
+    botMessage: "🔍 **Root Cause:** A faulty level control valve on the reflux line, which had failed in the closed position, preventing liquid from draining from the drum. This caused the liquid level to rise uncontrollably, triggering the alarms.\n\n✅ **Resolution:** Level control valve has been repaired and is functioning normally.\n\nBased on the data and maintenance logs, the issue with the Reflux Drum (3108-FTN-002) has been resolved.\n\nDo you want to explore other possible causes?",
     options: [
-      { text: "Yes", next: 'landing', isCorrect: true },
-      { text: "No action required", next: 'landing', isCorrect: true }
+      { text: "Yes, explore other issues", next: 'landing', isCorrect: true },
+      { text: "No, acknowledge resolution", next: '5-acknowledged', isCorrect: true }
+    ]
+  },
+
+  // Acknowledgment steps for resolved issues
+  '2-acknowledged': {
+    botMessage: "✅ **Acknowledged**\n\nThe Regeneration Tower issue has been noted as resolved. The steam trap replacement was successful and the system is operating normally.\n\nYou may now investigate other equipment issues or conclude your session.",
+    options: [
+      { text: "Investigate other issues", next: 'landing', isCorrect: true }
+    ]
+  },
+  '3-acknowledged': {
+    botMessage: "✅ **Acknowledged**\n\nThe Reflux Pump issue has been noted as resolved. The liquid level restoration resolved the cavitation problem and the pump is operating normally.\n\nYou may now investigate other equipment issues or conclude your session.",
+    options: [
+      { text: "Investigate other issues", next: 'landing', isCorrect: true }
+    ]
+  },
+  '4-acknowledged': {
+    botMessage: "✅ **Acknowledged**\n\nThe Reboiler issue has been noted as resolved. The steam control valve recalibration restored proper heat transfer and the system is operating normally.\n\nYou may now investigate other equipment issues or conclude your session.",
+    options: [
+      { text: "Investigate other issues", next: 'landing', isCorrect: true }
+    ]
+  },
+  '5-acknowledged': {
+    botMessage: "✅ **Acknowledged**\n\nThe Reflux Drum issue has been noted as resolved. The level control valve repair resolved the liquid level alarms and the system is operating normally.\n\nYou may now investigate other equipment issues or conclude your session.",
+    options: [
+      { text: "Investigate other issues", next: 'landing', isCorrect: true }
     ]
   },
 

@@ -35,7 +35,7 @@ const ChatMessages = ({ messages }) => {
   }, [messages]);
 
   return (
-    <div className="h-80 overflow-y-auto p-4 bg-gray-50">
+    <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
       <div className="space-y-4">
         {messages.map((message, index) => (
           <ChatMessage key={index} message={message} />

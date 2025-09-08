@@ -5,7 +5,7 @@ import { landingPageOptions } from '../data/gameData';
 const LandingPage = ({ onPromptSelect }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-2xl w-full text-center">
+      <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-2xl w-full text-center" style={{ aspectRatio: '3/4' }}>
         <div className="mb-6">
           <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
             <Bot className="w-8 h-8 text-white" />
@@ -25,15 +25,12 @@ const LandingPage = ({ onPromptSelect }) => {
               >
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <div className="flex items-center mb-2">
+                    <div className="flex items-center">
                       <AlertTriangle className="w-5 h-5 text-red-500 mr-2" />
-                      <span className="font-semibold text-gray-800 group-hover:text-indigo-700">
-                        {option.equipment}
-                      </span>
+                      <p className="text-sm text-gray-600 group-hover:text-gray-800 leading-relaxed">
+                        {option.text}
+                      </p>
                     </div>
-                    <p className="text-sm text-gray-600 group-hover:text-gray-800 leading-relaxed">
-                      {option.text}
-                    </p>
                   </div>
                 </div>
               </button>
@@ -42,7 +39,7 @@ const LandingPage = ({ onPromptSelect }) => {
         </div>
 
         <div className="text-center text-sm text-gray-500 mb-4">
-          ⏱️ Complete investigation within 5 minutes • 🏆 Earn points for correct answers • ⚠️ Overtime penalties apply
+          ⏱️ Complete investigation within 5 minutes
         </div>
       </div>
     </div>
